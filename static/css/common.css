@@ -1,0 +1,21 @@
+/** 
+ *@ common Stylesheet
+ *@ 2017-09-19
+ *@ Author: zenghongcong
+ */
+@charset "utf-8";
+
+body{ background: #fff; font-size: 15px; color: #666; }
+ul{ list-style: none; }
+a{ text-decoration: none; }
+
+.fr{ float: right; }
+.fl{ float: left; }
+.clear { *zoom: 1; }
+.clear:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
+.ell{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.ell2{ overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.ell3{ overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.center{ position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; }
+
+.el-input input{ height: 40px; }
