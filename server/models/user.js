@@ -30,8 +30,22 @@ const getUserList = async function(){
 	return await userSchema.findAndCount();
 }
 
+const upsertUser = async function(data){
+	return await userSchema.upsert(data);
+}
+
+const delUserById = async function(id){
+	return await userSchema.destroy({
+		where: {
+			id: id
+		}
+	});
+}
+
 module.exports = {
 	getUserByName,
 	getUserById,
-	getUserList
+	getUserList,
+	upsertUser,
+	delUserById
 }

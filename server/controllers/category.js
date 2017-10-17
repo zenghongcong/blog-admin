@@ -25,7 +25,16 @@ const getCategory = async function(ctx){
 	};
 }
 
+const upsertCategory = async function(ctx){
+	let data = ctx.request.body;
+	let result = await categoryModel.upsertCategory(data);
+	ctx.body = {
+		msg: result == 'true' || result == true ? '添加成功' : '更新成功'
+	};
+}
+
 module.exports = {
 	getCategoryList,
-	getCategory
+	getCategory,
+	upsertCategory
 };

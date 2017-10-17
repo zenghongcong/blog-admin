@@ -2,7 +2,7 @@
   <header>
   	<a class="logo fl" href="#/article">Blog Admin</a>
   	<div class="user-info fr">
-  		<span class="name">{{user}}</span><span class="gap">|</span><span>退出</span>
+  		<span class="name">{{user}}</span><span class="gap">|</span><span class="logout" @click="logout">退出</span>
   	</div>
   </header>
 </template>
@@ -14,6 +14,13 @@ export default {
     return {
    		user: localStorage.getItem('user')
     }
+  },
+  methods: {
+  	logout(){
+  		sessionStorage.setItem('token', null)
+  		localStorage.setItem('user', null)
+  		this.$router.push('/login')
+  	}
   }
 }
 </script>
@@ -28,7 +35,7 @@ header
   width: 100%
   height: 60px
   padding: 0 20px
-  background: #579ec8
+  background: #438EB9
   .logo
     display: block
     line-height: 60px
@@ -42,4 +49,6 @@ header
       font-size: 18px
     .gap
       margin: 0 15px
+    .logout
+      cursor: pointer
 </style>

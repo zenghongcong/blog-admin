@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-  	<v-nav></v-nav>
-  	<v-sidebar></v-sidebar>
+  	<v-nav v-if="route !== 'Login'"></v-nav>
+  	<v-sidebar v-if="route !== 'Login'"></v-sidebar>
   	<div class="content">
     	<router-view/>
   	</div>
@@ -9,18 +9,16 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import Nav from '@/components/Nav'
-import Sidebar from '@/components/Sidebar'
-
-Vue.component('v-nav', Nav);
-Vue.component('v-sidebar', Sidebar);
-
 export default {
   name: 'app',
   data(){
   	return {
   		
+  	}
+  },
+  computed: {
+  	route: function(){
+  		return this.$route.name;
   	}
   }
 }

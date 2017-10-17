@@ -59,10 +59,36 @@ const getUserList = async function(ctx){
 	}
 }
 
+const upsertUser = async function(ctx){
+	let data = ctx.request.body;
+	let user = await userModel.getUserByName(data.name);
+	if(user){
+		ctx.body = {
+			msg: '该用户名已存在'
+		};
+	}else{
+		let result = await userModel.upsertUser(data);
+		ctx.body = {
+			msg: result == 'true' || result == true ? '添加成功' : '更新成功'
+		};
+	}
+}
+
+const delUser = async function(ctx){
+	let id = ctx.request.body.id;
+	let result = await userModel.delUserById(id);
+	ctx.body = {
+		msg: '删除成功',
+		id: result
+	};
+}
+
 module.exports = {
 	postUserAuth,
 	getUserInfo,
-	getUserList
+	getUserList,
+	upsertUser,
+	delUser
 }
 
 

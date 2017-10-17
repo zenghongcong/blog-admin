@@ -23,7 +23,8 @@ export default {
   		this.$http.post('/auth/user/login', this.form)
   		.then((res) => {
   			if(res.status == 200){
-  				sessionStorage.setItem('token', res.token)
+  				sessionStorage.setItem('token', res.data.token)
+  				localStorage.setItem('user', res.data.user)
   				this.$router.push('/article')
   			}else{
   				sessionStorage.setItem('token', null)

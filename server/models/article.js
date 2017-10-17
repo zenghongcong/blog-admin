@@ -33,8 +33,22 @@ const getArticleList = async function(limit, offset){
 	});
 }
 
+const upsertArticle = async function(data){
+	return await articleSchema.upsert(data);
+}
+
+const delArticleById = async function(id){
+	return await articleSchema.destroy({
+		where: {
+			id: id
+		}
+	});
+}
+
 module.exports = {
 	getArticleById,
-	getArticleList
+	getArticleList,
+	delArticleById,
+	upsertArticle
 };
 

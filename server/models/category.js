@@ -31,8 +31,13 @@ const getCategoryList = async function(){
 	});
 }
 
+const upsertCategory = async function(data){
+	return await categorySchema.upsert(data);
+}
+
 module.exports = {
 	getCategoryById,
-	getCategoryList
+	getCategoryList,
+	upsertCategory
 };
 

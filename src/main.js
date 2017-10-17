@@ -3,13 +3,31 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import VueQuillEditor from 'vue-quill-editor'
+import Nav from '@/components/Nav'
+import Sidebar from '@/components/Sidebar'
 import App from './App'
 import router from './router'
 import Axios from 'axios'
 
 Vue.use(ElementUI)
+Vue.use(VueQuillEditor)
 Vue.prototype.$http = Axios
+Vue.component('v-nav', Nav);
+Vue.component('v-sidebar', Sidebar);
 Vue.config.productionTip = false
+
+Vue.filter('date', (value, formatter) => {
+	let time = new Date(value),
+		y = time.getFullYear(),
+		m = time.getMonth() + 1,
+		d = time.getDate(),
+		h = time.getHours(),
+		mm = time.getMinutes(),
+		s = time.getSeconds();
+		
+	return formatter === 'y-m-d' ? y + '-' + m + '-' + d : y + '-' + m + '-' + d + ' ' + h + ':' + mm + ':' + s;
+})
 
 router.beforeEach((to, from, next) => {
 	let token = sessionStorage.getItem('token')
